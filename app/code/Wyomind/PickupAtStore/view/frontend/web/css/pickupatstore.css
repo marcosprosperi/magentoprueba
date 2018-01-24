@@ -1,0 +1,13 @@
+div.pas-loader {
+    background: url('../images/loader.gif') 50% 50% no-repeat transparent;
+    height: 38px;
+    display: block;
+}
+
+div.pas-use, div.pas-select-pos {
+    margin-top:28px !important;
+}
+
+#error-no-pos-selected {
+    display : none;
+}

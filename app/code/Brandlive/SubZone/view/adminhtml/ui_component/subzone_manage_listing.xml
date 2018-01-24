@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <!-- main part of the grid -->
+    <argument name="data" xsi:type="array">
+        <!-- define where to find the date source--> 
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing_data_source</item>
+            <item name="deps" xsi:type="string">subzone_manage_listing.subzone_manage_listing_data_source</item>
+        </item>
+        <!-- define where to find the columns -->
+        <item name="spinner" xsi:type="string">subzone_manage_columns</item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add a new SubZone</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/newAction</item>
+            </item>
+        </item>
+    </argument>
+
+    <!-- define the date source (must be the same than in argument/item/provider and argument/js_config/deps -->
+    <dataSource name="subzone_manage_listing_data_source_">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <!-- unique name for the grid -->
+            <argument name="class" xsi:type="string">SubZonesGridDataProvider</argument>
+            <!-- name of the data source same as in argument/js_config/provider -->
+            <argument name="name" xsi:type="string">subzone_manage_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">subzone_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">subzone_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+
+        <!-- we put the others elements here -->
+
+        <container name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.subzone_manage_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </container>
+        
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.subzone_manage_columns.subzone_id</item>
+                    <item name="displayArea" xsi:type="string">bottom</item>
+                </item>
+            </argument>
+        </paging>
+
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">subzone_manage_listing.subzone_manage_listing.listing_top.bookmarks:current.columns.${ $.index }.visible</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+    </container>
+
+    <!-- define the columns of my grid -->
+    <columns name="subzone_manage_columns">
+
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <!-- Bookmarks behaviour -->
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="controlVisibility" xsi:type="boolean">true</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${$.index}</item>
+                        <item name="namespace" xsi:type="string">current.${$.storageConfig.root}</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!-- define which field will be used as ID -->
+                    <item name="indexField" xsi:type="string">subzone_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+
+        <!-- Column ID -->
+        <column name="subzone_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Column name -->
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">subzone</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <!-- Column PostalCodes -->
+        <column name="postal_codes">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">subzone</item>
+                    <item name="dataScope" xsi:type="string">postal_codes</item>
+                    <item name="label" xsi:type="string" translate="true">Postal Codes</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <!-- action columns edit and delete -->
+        <actionsColumn name="actions" class="Brandlive\SubZone\Ui\Component\Listing\Column\SubZonesActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">subzone_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+
+</listing>

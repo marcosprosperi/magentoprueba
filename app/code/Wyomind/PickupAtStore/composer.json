@@ -1,0 +1,23 @@
+{
+    "name": "wyomind/pickupatstore",
+    "description": "Give your customers the ability to pick up their orders from any of your sales outlets or warehouses when checking out.  Locations to pickup can be displayed on a Google Map and can be managed by store-views and/or customer groups.",
+    "type": "magento2-module",
+    "version": "3.0.5.1",
+    "license": [
+        "Commercial License - Copyright 2017 - WYOMIND Sarl - Purchasing any product (Software) from the Wyomind.com web-site means buyer agree to the following statements (see LICENSE.TXT)"
+    ],
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/framework": ">=100.0.0",
+        "wyomind/core": ">=3.0.0",
+        "wyomind/pointofsale": ">=6.3.1.2"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Wyomind\\PickupAtStore\\": ""
+        }
+    }
+}

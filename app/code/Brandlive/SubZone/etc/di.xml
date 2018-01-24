@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Wyomind\PointOfSale\Block\Adminhtml\Manage\Edit\Tab\Address" type="Brandlive\SubZone\Block\Adminhtml\Manage\Edit\Tab\Address" />
+    <preference for="Wyomind\PointOfSale\Controller\Adminhtml\Manage\Save" type="Brandlive\SubZone\Controller\Adminhtml\Manage\Save" />
+
+    <virtualType name="SubZonesGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Brandlive\SubZone\Model\ResourceModel\SubZone\Collection</argument>
+              <argument name="filterPool" xsi:type="object" shared="false">SubZonesGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SubZonesGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="subzone_manage_listing_data_source" xsi:type="string">Brandlive\SubZone\Model\ResourceModel\SubZone\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Brandlive\SubZone\Model\ResourceModel\SubZone\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brandlive_subzone</argument>
+            <argument name="resourceModel" xsi:type="string">Brandlive\SubZone\Model\ResourceModel\SubZone</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <!-- Sales / SubZones -->
+        <add id="Brandlive_SubZone::main"
+             parent="Wyomind_PointOfSale::main"
+             module="Brandlive_SubZone"
+             title="Manage SubZones"
+             sortOrder="1"
+             resource="Brandlive_SubZone::main"
+             action="subzone/manage"/>
+    </menu>
+</config>
