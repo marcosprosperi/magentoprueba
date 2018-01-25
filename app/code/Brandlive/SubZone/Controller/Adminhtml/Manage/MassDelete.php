@@ -10,6 +10,7 @@ class MassDelete extends \Magento\Backend\App\Action
     /**
      * @var CollectionFactory
      */
+    protected $subZoneFactory;
     protected $subZoneCollectionFactory;
 
     /**
@@ -19,9 +20,11 @@ class MassDelete extends \Magento\Backend\App\Action
 
     public function __construct(
         Action\Context $context,
+        \Brandlive\SubZone\Model\SubZoneFactory $subZoneFactory,
         \Brandlive\SubZone\Model\ResourceModel\SubZone\CollectionFactory $subZoneCollectionFactory,
         Filter $filter
     ) {
+        $this->subZoneFactory = $subZoneFactory;
         $this->subZoneCollectionFactory = $subZoneCollectionFactory;
         $this->filter=$filter;
 
@@ -30,13 +33,17 @@ class MassDelete extends \Magento\Backend\App\Action
 
     public function execute()
     {
-
+        
         $collection = $this->filter->getCollection($this->subZoneCollectionFactory->create());
+      
         $subZonesDeletes=0;
+        $subZone = $this->subZoneFactory->create();
+
         foreach ($collection->getItems() as $item) {
-            $item->delete();
+            $subZone->load($item['subzone_id'])->delete();
             $subZonesDeletes++;
         }
+
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $subZonesDeletes));
 
         $resultRedirect = $this->resultRedirectFactory->create();

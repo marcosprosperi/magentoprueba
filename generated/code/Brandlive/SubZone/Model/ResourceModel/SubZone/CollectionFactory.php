@@ -40,7 +40,6 @@ class CollectionFactory
      */
     public function create(array $data = array())
     {
-        //print_r($data); exit;
         return $this->_objectManager->create($this->_instanceName, $data);
     }
 }

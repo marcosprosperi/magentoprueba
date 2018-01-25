@@ -89,7 +89,29 @@
             </argument>
         </filters>
     </container>
-
+    <massaction name="listing_massaction">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <!-- we put here the path to the element pfay_contact_ids of contacts_test_columns  element -->
+                <item name="selectProvider" xsi:type="string">subzone_manage_listing.subzone_manage_listing.subzone_manage_columns.ids</item>
+                <item name="displayArea" xsi:type="string">bottom</item>
+                <item name="indexField" xsi:type="string">subzone_id</item>
+            </item>
+        </argument>
+        <action name="delete">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">delete</item>
+                    <item name="label" xsi:type="string" translate="true">Delete Selected</item>
+                    <item name="url" xsi:type="url" path="*/*/massDelete"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Delete all selected contacts</item>
+                        <item name="message" xsi:type="string" translate="true">Do you want to delete all the selected contacts?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+    </massaction>
     <!-- define the columns of my grid -->
     <columns name="subzone_manage_columns">
 
@@ -119,7 +141,7 @@
                 </item>
             </argument>
         </selectionsColumn>
-
+        
         <!-- Column ID -->
         <column name="subzone_id">
             <argument name="data" xsi:type="array">
