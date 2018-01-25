@@ -108,6 +108,7 @@ return array (
     'Magento_Weee' => 1,
     'Magento_CatalogWidget' => 1,
     'Magento_Wishlist' => 1,
+    'Pfay_Contacts' => 1,
     'Shopial_Facebook' => 0,
     'Wyomind_PointOfSale' => 1,
     'Brandlive_SubZone' => 1,
