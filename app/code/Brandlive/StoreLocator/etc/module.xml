@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/Magento/Module/etc/module.xsd">
+    <module name="Brandlive_StoreLocator" setup_version="1.0.0">
+        <sequence>
+            <module name="Brandlive_CMS" />
+            <module name="Wyomind_PointOfSale" setup_version="6.3.0"/>
+        </sequence>
+    </module>
+</config>
