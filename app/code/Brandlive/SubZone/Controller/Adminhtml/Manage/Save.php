@@ -148,6 +148,7 @@ class Save extends \Wyomind\PointOfSale\Controller\Adminhtml\PointOfSale
             }
 
             try {
+
                 $model->save();
 
                 $this->messageManager->addSuccess(__('The POS has been saved.'));

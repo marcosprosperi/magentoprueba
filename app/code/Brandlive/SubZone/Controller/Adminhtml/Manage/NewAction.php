@@ -32,7 +32,7 @@ class NewAction extends \Magento\Backend\App\Action
 
     public function execute()
     {
-        
+
         $this->_view->loadLayout();
         $this->_view->renderLayout();
 
@@ -51,7 +51,10 @@ class NewAction extends \Magento\Backend\App\Action
             }
 
             $subZone = $this->_objectManager->create(SubZone::class);
-            $subZone->setData($subZoneData)->save();
+            $subZone->setName($subZoneData['subzone']['name']);
+            $subZone->setPostalCodes($subZoneData['subzone']['postal_codes']);
+            $subZone->setStoreId($subZoneData['subzone']['store_id']);
+            $subZone->save();
             $resultRedirect = $this->resultRedirectFactory->create();
             $this->messageManager->addSuccessMessage(__('Your subzone has been added !'));
             return $resultRedirect->setPath('*/*/index');

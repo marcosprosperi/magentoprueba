@@ -1,0 +1,1 @@
+/var/www/brandlive/bercomat/src/app/code/Wyomind/AdvancedInventory/view/adminhtml/web/js/pointofsale/edit.js

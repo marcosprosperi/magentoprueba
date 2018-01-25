@@ -51,7 +51,7 @@ class Edit extends \Magento\Backend\App\Action
             $subZone
                 ->setData($subZoneData)
                 ->save();
-
+            $this->messageManager->addSuccessMessage(__('Your subzone has been modified !'));
             return $resultRedirect->setPath('*/*/index');
         }
     }
