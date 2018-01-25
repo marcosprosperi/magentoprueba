@@ -1,0 +1,1 @@
+/var/www/brandlive/bercomat/src/lib/web/mage/smart-keyboard-handler.js

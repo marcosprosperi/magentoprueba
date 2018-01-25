@@ -6,6 +6,39 @@
  */
 
 var config = {
+    map: {
+        '*': {
+            systemMessageDialog: 'Magento_AdminNotification/system/notification',
+            toolbarEntry:   'Magento_AdminNotification/toolbar_entry'
+        }
+    }
+};
+
+require.config(config);
+})();
+(function() {
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+var config = {
+    map: {
+        '*': {
+            'mediaUploader':  'Magento_Backend/js/media-uploader'
+        }
+    }
+};
+
+require.config(config);
+})();
+(function() {
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+var config = {
     'shim': {
         'extjs/ext-tree': [
             'prototype'
@@ -148,22 +181,6 @@ require.config(config);
  */
 
 var config = {
-    map: {
-        '*': {
-            'mediaUploader':  'Magento_Backend/js/media-uploader'
-        }
-    }
-};
-
-require.config(config);
-})();
-(function() {
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-var config = {
     paths: {
         'customer/template': 'Magento_Customer/templates'
     },
@@ -172,23 +189,6 @@ var config = {
             addressTabs:            'Magento_Customer/edit/tab/js/addresses',
             dataItemDeleteButton:   'Magento_Customer/edit/tab/js/addresses',
             observableInputs:       'Magento_Customer/edit/tab/js/addresses'
-        }
-    }
-};
-
-require.config(config);
-})();
-(function() {
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-var config = {
-    map: {
-        '*': {
-            systemMessageDialog: 'Magento_AdminNotification/system/notification',
-            toolbarEntry:   'Magento_AdminNotification/toolbar_entry'
         }
     }
 };
@@ -370,7 +370,8 @@ require.config(config);
 var config = {
     map: {
         '*': {
-            transparent: 'Magento_Payment/transparent'
+            swatchesProductAttributes: 'Magento_Swatches/js/product-attributes',
+            swatchesTypeChange: 'Magento_Swatches/js/type-change'
         }
     }
 };
@@ -386,8 +387,7 @@ require.config(config);
 var config = {
     map: {
         '*': {
-            swatchesProductAttributes: 'Magento_Swatches/js/product-attributes',
-            swatchesTypeChange: 'Magento_Swatches/js/type-change'
+            transparent: 'Magento_Payment/transparent'
         }
     }
 };

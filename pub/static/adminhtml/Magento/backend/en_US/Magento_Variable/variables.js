@@ -1,1 +1,0 @@
-/var/www/brandlive/bercomat/src/vendor/magento/module-variable/view/adminhtml/web/variables.js

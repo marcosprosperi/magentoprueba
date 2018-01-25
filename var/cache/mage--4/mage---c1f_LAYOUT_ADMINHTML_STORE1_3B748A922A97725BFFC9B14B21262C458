@@ -1,4 +1,14 @@
-a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1516907520;s:6:"expire";i:9999999999;s:4:"tags";s:74:"c1f_DEFAULT,c1f_SUBZONE_MANAGE_INDEX,c1f_LAYOUT_GENERAL_CACHE_TAG,c1f_MAGE";}
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1516912115;s:6:"expire";i:9999999999;s:4:"tags";s:74:"c1f_DEFAULT,c1f_SUBZONE_MANAGE_INDEX,c1f_LAYOUT_GENERAL_CACHE_TAG,c1f_MAGE";}
+<body>
+   <referenceContainer name="notifications">
+      <uiComponent name="notification_area"/>
+      <block class="Magento\AdminNotification\Block\System\Messages\UnreadMessagePopup" name="unread_system_messages" as="unread_system_messages" template="Magento_AdminNotification::system/messages/popup.phtml"/>
+      <block class="Magento\AdminNotification\Block\Window" name="notification_window" as="notification_window" aclResource="Magento_AdminNotification::show_toolbar" template="Magento_AdminNotification::notification/window.phtml"/>
+   </referenceContainer>
+   <referenceContainer name="header">
+      <block class="Magento\AdminNotification\Block\ToolbarEntry" name="notification.messages" before="user" template="Magento_AdminNotification::toolbar_entry.phtml"/>
+   </referenceContainer>
+</body>
 <head>
    <title>Magento Admin</title>
    <meta name="viewport" content="width=1024"/>
@@ -67,16 +77,6 @@ a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1516907520;s:6:"expire";i:9999999999;s:4:"t
       <block class="Magento\Translation\Block\Js" name="translate" template="Magento_Translation::translate.phtml"/>
       <block class="Magento\Framework\View\Element\Js\Components" name="head.components" as="components" template="Magento_Backend::page/js/components.phtml"/>
       <block class="Magento\Framework\View\Element\Html\Calendar" name="head.calendar" as="calendar" template="Magento_Backend::page/js/calendar.phtml"/>
-   </referenceContainer>
-</body>
-<body>
-   <referenceContainer name="notifications">
-      <uiComponent name="notification_area"/>
-      <block class="Magento\AdminNotification\Block\System\Messages\UnreadMessagePopup" name="unread_system_messages" as="unread_system_messages" template="Magento_AdminNotification::system/messages/popup.phtml"/>
-      <block class="Magento\AdminNotification\Block\Window" name="notification_window" as="notification_window" aclResource="Magento_AdminNotification::show_toolbar" template="Magento_AdminNotification::notification/window.phtml"/>
-   </referenceContainer>
-   <referenceContainer name="header">
-      <block class="Magento\AdminNotification\Block\ToolbarEntry" name="notification.messages" before="user" template="Magento_AdminNotification::toolbar_entry.phtml"/>
    </referenceContainer>
 </body>
 <body>
