@@ -35,9 +35,9 @@ class Edit extends \Magento\Backend\App\Action
             $id = $subZoneData['subzone_id'];
             $subZones = $this->subZoneCollectionFactory->create();
             $count = $subZones
-                ->addFieldToFilter('subzone_id', array('neq'=>$id))
-                ->addFieldToFilter('name', array('eq'=>$subZoneData['name']))
-                ->getSize();
+            ->addFieldToFilter(['subzone_id','postal_codes'], [array('neq'=>$id),array('eq'=>$subZoneData['postal_codes'])])
+            ->addFieldToFilter('name', array('eq'=>$subZoneData['name']))
+            ->getSize();
 
             $resultRedirect = $this->resultRedirectFactory->create();
 

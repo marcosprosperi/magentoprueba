@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <modaloverlay>
+            <text>
+                <title_text>Please enter your postal code.</title_text>
+                <placeholder_text>Enter your postal code</placeholder_text>
+                <validation_text>This is a required field.</validation_text>
+                <button_text>Send</button_text>
+            </text>
+        </modaloverlay>
+    </default>
+</config>

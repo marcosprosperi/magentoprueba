@@ -88,6 +88,9 @@ class Save extends \Wyomind\PointOfSale\Controller\Adminhtml\PointOfSale
                 }
             }
 
+            foreach(explode(",",$data["subzone_id"]) as $subzone_id) {
+                print_r("asd");
+            }
 
             if (isset($data["image"]["delete"]) && $data["image"]["delete"] == 1) {
                 $data["image"] = "";

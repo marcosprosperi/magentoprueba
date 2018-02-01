@@ -3,6 +3,7 @@ return array (
   'modules' => 
   array (
     'Magento_Store' => 1,
+    'Brandlive_ModalOverlay' => 1,
     'Magento_Directory' => 1,
     'Wyomind_Core' => 1,
     'Magento_AdminNotification' => 1,

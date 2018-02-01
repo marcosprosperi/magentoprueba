@@ -40,6 +40,7 @@ class PointOfSale extends \Magento\Framework\View\Element\Template
 
     public function getCountries()
     {
+
         $collection = $this->_pointofsaleModel->getCountries($this->_storeManager->getStore()->getStoreId());
         $countries = [];
         foreach ($collection as $country) {
@@ -52,8 +53,10 @@ class PointOfSale extends \Magento\Framework\View\Element\Template
                 ];
             }
         }
+        
         return $countries;
     }
+
 
     public function getJsonData()
     {

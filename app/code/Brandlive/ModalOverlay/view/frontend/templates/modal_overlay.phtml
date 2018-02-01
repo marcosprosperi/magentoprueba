@@ -1,0 +1,32 @@
+<?php if ($texts = $block->getTexts()) :?>
+<div id="modal-overlay" style="display:none;width:400px important!">
+  <form method="post" class="form subscribe" id="form_modal_overlay" action="/conf/manage/setup">
+        <h3><?php echo $texts['title_text'] ?></h3>
+        <div class="field newsletter">
+            <div class="control">
+                <input name="postal_code" id="postal_code" require="required" placeholder="<?php echo $texts['placeholder_text'] ?>" data-validate="{required:true}" type="text">
+                <div for="postal_code"  generated="true" class="mage-error" style="display:none" id="postalcode-error"><?php echo $texts['validation_text'] ?></div>
+            </div>
+        </div>
+        <br/>
+        <div class="actions">
+            <button class="action subscribe primary" title="Send" id="send" type="buttom" style="float:right">
+                <span><?php echo $texts['button_text'] ?></span>
+            </button>
+        </div>
+  </form>
+</div>
+<?php endif;?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "modal_overlay": {
+                        "component": "Brandlive_ModalOverlay/js/modal_overlay"
+                    }
+                 }
+            }
+        }
+    }
+</script>

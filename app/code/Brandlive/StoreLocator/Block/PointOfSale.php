@@ -4,6 +4,7 @@ namespace Brandlive\StoreLocator\Block;
 
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Directory\Model\Country;
+use Magento\Directory\Model\Region;
 use Wyomind\PointOfSale\Helper\Data;
 
 class PointOfSale extends \Wyomind\PointOfSale\Block\PointOfSale
@@ -14,6 +15,7 @@ class PointOfSale extends \Wyomind\PointOfSale\Block\PointOfSale
     protected $regionCollectionFactory;
 
     protected $regionFactory;
+    protected $regionModel;
 
     private $places = null;
 
@@ -21,6 +23,7 @@ class PointOfSale extends \Wyomind\PointOfSale\Block\PointOfSale
         Context $context,
         \Wyomind\PointOfSale\Model\PointOfSale $pointofsaleModel,
         Country $countryModel,
+        Region $regionModel,
         Data $helper,
         \Magento\Directory\Model\ResourceModel\Region\CollectionFactory $regionCollectionFactory,
         \Magento\Directory\Model\RegionFactory $regionFactory,
@@ -29,6 +32,7 @@ class PointOfSale extends \Wyomind\PointOfSale\Block\PointOfSale
         parent::__construct($context, $pointofsaleModel, $countryModel, $helper, $data);
         $this->regionCollectionFactory = $regionCollectionFactory;
         $this->regionFactory = $regionFactory;
+        $this->regionModel = $regionModel;
     }
 
     public function getPointofsale()
@@ -62,20 +66,21 @@ class PointOfSale extends \Wyomind\PointOfSale\Block\PointOfSale
         return $countries;
     }
 
-    public function getStates()
-    {
-        $collection = $this->regionCollectionFactory()->create();
+    public function getStates() {
+        $stateCollection = $this->regionModel->getCollection();
         $states = [];
         $stateModel = $this->regionFactory->create();
-        foreach($collection as $state) {
+        foreach($stateCollection as $state) {
             if ($state->getCode()){
-                $stateModel->loadByCode($code, $countryId);
                 $stateName = $state->getName();
                 $states[] = [
                     'code' => $state->getCode(),
-                    'name' => $stateName ? $stateName : $state->getData('default_name')
+                    'name' => $stateName ? $stateName : $state->getData('default_name'),
+                    'country_id' => $state->getCountryId()
                 ];
             }
         }
+        return $states;
     }
+
 }

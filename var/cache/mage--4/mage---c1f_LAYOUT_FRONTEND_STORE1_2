@@ -1,6 +1,17 @@
-a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1516911998;s:6:"expire";i:9999999999;s:4:"tags";s:37:"c1f_LAYOUT_GENERAL_CACHE_TAG,c1f_MAGE";}
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1517432116;s:6:"expire";i:9999999999;s:4:"tags";s:37:"c1f_LAYOUT_GENERAL_CACHE_TAG,c1f_MAGE";}
 <?xml version="1.0"?>
-<layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><handle id="catalog_category_view"><body/>
+<layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><handle id="default" layout="3columns"><body>
+   <referenceContainer name="after.body.start">
+      <block class="Brandlive\ModalOverlay\Block\ModalOverlay" template="Brandlive_ModalOverlay::modal_overlay.phtml" name="modalOverlay" as="modalOverlay"/>
+   </referenceContainer>
+   <referenceContainer name="header.container">
+      <referenceBlock name="store_language" remove="true"/>
+   </referenceContainer>
+   <referenceContainer name="page.top">
+      <referenceBlock name="store.settings.language" remove="true"/>
+   </referenceContainer>
+</body>
+</handle><handle id="catalog_category_view"><body/>
 </handle><handle id="catalogsearch_advanced_index"><body/>
 </handle><handle id="catalogsearch_advanced_result"><body/>
 </handle><handle id="catalogsearch_result_index"><body/>

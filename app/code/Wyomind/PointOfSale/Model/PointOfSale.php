@@ -61,7 +61,6 @@ class PointOfSale extends \Magento\Framework\Model\AbstractModel
 
     public function getCountries($storeId)
     {
-
         return $this->getCollection()->addFieldToFilter('status', ['status' => 1])->getCountries($storeId);
     }
 
@@ -70,4 +69,5 @@ class PointOfSale extends \Magento\Framework\Model\AbstractModel
         $collection = $this->getCollection()->getLastInsertedId();
         return $collection->getFirstItem()->getPlaceId();
     }
+
 }

@@ -41,19 +41,17 @@ class NewAction extends \Magento\Backend\App\Action
         if ($subZoneData) {
             $subZones = $this->subZoneCollectionFactory->create();
             $count = $subZones
-                ->addFieldToFilter('name', array('eq'=>$subZoneData['subzone']['name']))
+                ->addFieldToFilter(['name', 'postal_codes'], [array('eq'=>$subZoneData['subzone']['name']),array('eq'=>$subZoneData['subzone']['postal_codes'])])
                 ->getSize();
 
             if ($count > 0) {
-                $this->messageManager->addErrorMessage(__('Another subzone with the same name already exists.'));
+                $this->messageManager->addErrorMessage(__('Another subzone with the same name or same postal code already exists.'));
                 $this->dataPersistor->set('subzone_manage', $subZoneData['subzone']);
                 return $resultRedirect->setPath('*/*/newAction', $this->getRequest()->getParams());
             }
 
             $subZone = $this->_objectManager->create(SubZone::class);
-            $subZone->setName($subZoneData['subzone']['name']);
-            $subZone->setPostalCodes($subZoneData['subzone']['postal_codes']);
-            $subZone->setStoreId($subZoneData['subzone']['store_id']);
+            $subZone->setData($subZoneData['subzone'])->save();
             $subZone->save();
             $resultRedirect = $this->resultRedirectFactory->create();
             $this->messageManager->addSuccessMessage(__('Your subzone has been added !'));

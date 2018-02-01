@@ -6,16 +6,16 @@
     <div id="map_canvas_pointofsale" class='hide-400'></div>
     <div id="pointofsale" class="alone">
         <div id="title">
-            <?php echo __('All our store locations'); ?>
+            <?php echo __('All our store locations  WYO'); ?>
             <?php $countries = $block->getCountries(); ?>
+            <?php $states = $block->getStates(); ?>
 
-            <?php if (count($countries) > 1) : ?>
+            <?php if(count($countries) > 1) { ?>
                 <div id="country_selection">
                     <?php echo __('Select a country :'); ?>
-
                     <select id="country_place">
                         <option value="*">
-                            <?php echo __('All countries'); ?>
+                            <?php echo __('All countries');?>
                         </option>
                         <?php foreach ($countries as $country): ?>
                             <option value="<?php echo $country['code']; ?>">
@@ -24,15 +24,41 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
+
+            <?php if(count($states) > 1) { ?>
+                <div id="state_selection" style="display:none">
+                    <?php echo __('Select a state :'); ?>
+                    <select id="state_place">
+                        <option value="*">
+                            <?php echo __('All states');?>
+                        </option>
+                        <?php foreach ($states as $state): ?>
+                            <option value="<?php echo $state['code']; ?>">
+                                <?php echo $state['name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php } ?>
+
+            <?php if(count($states) > 1) { ?>
+                <div id="city_selection" style="display:none;">
+                    <input id="city" place-holder="Enter your city" value="" />
+                </div>
+            <?php } ?>
+            
+            
+
+
         </div>
         <div id="pointofsale_scroll">
             <?php foreach ($this->getPointofsale() as $place) : ?>
-                <div class="place <?php echo $place->getCountryCode(); ?>">
+                <div data-state="<?=$place->getState();?>" data-city="<?=$place->getCity();?>" data-country="<?=$place->getCountryCode();?>" class="place <?php echo $place->getCountryCode(); ?>">
                     <h3>
                         <a href="javascript:void(0)" class="go-to-place" id="<?php echo $place->getPlaceId(); ?>"><?php echo $place->getName(); ?></a>
                     </h3>
-                    <div id="place_<?php echo $place->getPlaceId(); ?>" class="details" style="display:none">
+                    <div data-state="<?=$place->getState();?>" id="place_<?php echo $place->getPlaceId(); ?>" class="details" style="display:none">
                         <?php echo $block->getPosHelper()->getStoreDescription($place); ?>
                     </div>
                 </div>
@@ -85,10 +111,14 @@
         },
         myAddress: null
     };
-    require(["jquery", "mage/mage"], function ($) {
+    require(['jquery', 'mage/mage'], function ($) {
+        
         $(function () {
             PointOfSale.places = <?php echo $block->getJsonData(); ?>;
+            PointOfSale.countries = <?php echo json_encode($countries); ?>;
+            PointOfSale.states = <?php echo json_encode($states); ?>;
             PointOfSale.__initialize();
+            PointOfSale.createDrop();
         });
     });
 </script>

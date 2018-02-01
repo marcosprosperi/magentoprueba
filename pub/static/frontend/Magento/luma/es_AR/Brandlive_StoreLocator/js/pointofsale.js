@@ -1,0 +1,1 @@
+/var/www/brandlive/bercomat/src/app/code/Brandlive/StoreLocator/view/frontend/web/js/pointofsale.js

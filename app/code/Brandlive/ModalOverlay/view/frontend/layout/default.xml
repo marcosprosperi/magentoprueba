@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Brandlive\ModalOverlay\Block\ModalOverlay"
+                   template="Brandlive_ModalOverlay::modal_overlay.phtml"
+                   name="modalOverlay"
+                   as="modalOverlay"/>
+        </referenceContainer>
+       <referenceContainer name="header.container">
+            <referenceBlock name="store_language" remove="true"/>
+            <!--<block class="Brandlive\ModalOverlay\Block\ModalOverlay"
+                   template="Brandlive_ModalOverlay::change_postalcode.phtml"
+                   name="changecp"
+                   as="changecp"/>-->
+        </referenceContainer>
+        <referenceContainer name="page.top">
+            <referenceBlock name="store.settings.language" remove="true"/>
+        </referenceContainer>
+    </body>
+</page>
+
+

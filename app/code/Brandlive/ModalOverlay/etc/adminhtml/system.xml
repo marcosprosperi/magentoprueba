@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- master tab -->
+        
+        <tab id="brandlive" translate="label" sortOrder="1000000">
+            <label>Brandlive</label>
+        </tab>
+        
+        <!-- module tab -->
+        <section id="modaloverlay" translate="label" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Modal Overlay</label>
+            <tab>brandlive</tab>
+            <resource>Brandlive_ModalOverlay::modaloverlay_config</resource>
+            <group id="text" translate="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Texts Configurations</label>
+                <field id="title_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Title</label>
+                </field>
+                <field id="placeholder_text" translate="placeholder" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Place Holder</label>
+                </field>
+                <field id="validation_text" translate="validation" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Validation</label>
+                </field>
+                <field id="button_text" translate="button_text" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Button</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

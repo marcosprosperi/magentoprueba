@@ -1,0 +1,1 @@
+/var/www/brandlive/bercomat/src/app/code/Brandlive/ModalOverlay/view/frontend/web/js/modal_overlay.js
